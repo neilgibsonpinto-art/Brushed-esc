@@ -1,0 +1,11 @@
+{
+    "autodeskProduct": "FUSION",
+    "type": "Script",
+    "id": "stmesc_enclosure_fusion",
+    "author": "STM ESC Project",
+    "description": "Generates a parametric 3D-printable enclosure for the STM ESC PCB (55×45mm) — base with standoffs + connector cutouts, and a snap-fit lid with vent slots.",
+    "version": "1.0",
+    "runOnStartup": false,
+    "supportedOS": "windows|mac",
+    "engine": "python"
+}

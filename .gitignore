@@ -1,0 +1,50 @@
+# KiCad Project Local and Backup files
+*.kicad_prl
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*-bak
+*.lck
+~*.lck
+*.tmp
+_autosave-*
+fp-info-cache
+
+# Freerouting & Netlist temporary outputs
+*.dsn
+freerouting.dsn
+temp-freerouting.dsn
+stmesc.net
+
+# Automated verification test dumps at root
+erc_report.json
+erc_stmesc.json
+erc_ss.json
+drc_report.json
+drc_stmesc.json
+test_report.pdf
+sch_export.pdf
+pcb_export.pdf
+sch_render.pdf
+pcb_render.pdf
+pcb_page_0.png
+sch_page_0.png
+pcb_top.svg
+
+# Temporary test schematic files
+ss.kicad_*
+ss.*
+stm342D.*
+stm632D.*
+
+# Backups and Editor Cache
+stmesc-backups/
+.copperpilot/
+.history/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Operating System Files
+Thumbs.db
+Desktop.ini
+.DS_Store
