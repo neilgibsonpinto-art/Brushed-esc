@@ -1,0 +1,616 @@
+// Auto-generated RadioMaster / FlySky Web Controller UI
+#ifndef APP_HTML_H
+#define APP_HTML_H
+
+#include <pgmspace.h>
+
+const char INDEX_HTML[] PROGMEM = R"rawliteral(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>RadioMaster / FlySky TX Controller</title>
+  <meta name="theme-color" content="#121216">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+    body {
+      background: radial-gradient(circle at 50% 20%, #1e1e24, #0d0d11 90%);
+      color: #e0e6ed;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Carbon Fiber Texture Overlay */
+    .chassis {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(black 15%, transparent 16%), 
+        radial-gradient(black 15%, transparent 16%);
+      background-size: 8px 8px;
+      background-position: 0 0, 4px 4px;
+      border: 6px solid #22222b;
+      border-radius: 18px;
+      margin: 4px;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    /* Top Radio Header */
+    .tx-header {
+      background: linear-gradient(180deg, #25252e, #181820);
+      padding: 8px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #333342;
+      border-radius: 12px 12px 0 0;
+    }
+    .brand-title {
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+      color: #ffaa00;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand-title span {
+      background: #ffaa00;
+      color: #000;
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-weight: 900;
+    }
+
+    /* Mode Pill Toggle (Wi-Fi vs Bluetooth) */
+    .mode-switch-box {
+      display: flex;
+      background: #101015;
+      padding: 3px;
+      border-radius: 20px;
+      border: 1px solid #3d3d4e;
+    }
+    .mode-btn {
+      padding: 5px 14px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #888899;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .mode-btn.active {
+      background: linear-gradient(180deg, #ff9900, #cc7a00);
+      color: #000;
+      box-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
+    }
+    .mode-btn.active.bt-mode {
+      background: linear-gradient(180deg, #0088ff, #0055cc);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0, 136, 255, 0.4);
+    }
+
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #202028;
+      color: #ff3344;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .status-badge.connected {
+      color: #00ff88;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Center Telemetry & LCD Panel */
+    .lcd-panel {
+      background: #0a0e14;
+      border: 2px solid #202b38;
+      border-radius: 8px;
+      margin: 8px 12px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: inset 0 0 12px rgba(0, 200, 255, 0.08);
+      font-family: "Courier New", monospace;
+    }
+    .telemetry-cell {
+      text-align: center;
+    }
+    .telemetry-label {
+      font-size: 9px;
+      color: #557799;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .telemetry-value {
+      font-size: 16px;
+      font-weight: 800;
+      color: #00ddff;
+      text-shadow: 0 0 8px rgba(0, 221, 255, 0.4);
+    }
+    .current-val {
+      color: #ffcc00;
+      text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+    }
+
+    /* Gimbals Arena */
+    .gimbals-container {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px;
+    }
+
+    /* Individual Gimbal Bezel (RadioMaster / FlySky knurled look) */
+    .gimbal-bezel {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #2a2a35, #111116 80%);
+      border: 4px solid #3e3e50;
+      box-shadow: 
+        0 6px 15px rgba(0,0,0,0.8),
+        inset 0 0 20px rgba(0,0,0,0.9),
+        inset 0 2px 4px rgba(255,255,255,0.15);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      touch-action: none;
+    }
+
+    /* Crosshair & Angle Markings */
+    .gimbal-crosshair-h, .gimbal-crosshair-v {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+    }
+    .gimbal-crosshair-h {
+      width: 90%;
+      height: 1px;
+    }
+    .gimbal-crosshair-v {
+      height: 90%;
+      width: 1px;
+    }
+    .gimbal-center-ring {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+
+    /* Physical Stick / Thumb Knob */
+    .gimbal-stick {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ff4444, #990000 85%);
+      border: 3px solid #ff7777;
+      box-shadow: 
+        0 4px 12px rgba(0,0,0,0.8),
+        inset 0 0 8px rgba(0,0,0,0.6),
+        0 0 10px rgba(255,68,68,0.3);
+      position: absolute;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: box-shadow 0.1s ease;
+    }
+    .gimbal-stick.right-stick {
+      background: radial-gradient(circle at 35% 35%, #0099ff, #0044aa 85%);
+      border: 3px solid #66bbff;
+      box-shadow: 
+        0 4px 12px rgba(0,0,0,0.8),
+        inset 0 0 8px rgba(0,0,0,0.6),
+        0 0 10px rgba(0,153,255,0.3);
+    }
+    .knurled-cap {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: repeating-radial-gradient(#111, #111 2px, #333 3px, #111 4px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Bottom Action Controls */
+    .tx-footer {
+      padding: 8px 16px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, #181820, #101016);
+      border-top: 1px solid #282836;
+      border-radius: 0 0 12px 12px;
+    }
+    .trim-label {
+      font-size: 10px;
+      color: #778899;
+      font-weight: 700;
+    }
+    .estop-btn {
+      background: linear-gradient(180deg, #e60000, #990000);
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 8px 24px;
+      border-radius: 6px;
+      border: 2px solid #ff4444;
+      box-shadow: 0 0 15px rgba(230,0,0,0.5);
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .estop-btn:active {
+      transform: scale(0.96);
+      background: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chassis">
+    <!-- Top Transmitter Bar -->
+    <div class="tx-header">
+      <div class="brand-title">
+        RadioMaster <span>TX</span>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="mode-switch-box">
+        <div id="btnWifi" class="mode-btn active" onclick="switchMode('wifi')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.5 0 6.67 1.42 8.99 3.73L12 19.3 3.01 11.23C5.33 8.92 8.5 7.5 12 7.5z"/></svg>
+          Wi-Fi
+        </div>
+        <div id="btnBt" class="mode-btn" onclick="switchMode('bluetooth')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
+          Bluetooth
+        </div>
+      </div>
+
+      <div id="statusBadge" class="status-badge">
+        <div class="status-dot"></div>
+        <span id="statusText">DISCONNECTED</span>
+      </div>
+    </div>
+
+    <!-- Center LCD Telemetry Panel -->
+    <div class="lcd-panel">
+      <div class="telemetry-cell">
+        <div class="telemetry-label">CH1 Throttle</div>
+        <div id="valCh1" class="telemetry-value">1500 us</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telemetry-label">CH2 Steering</div>
+        <div id="valCh2" class="telemetry-value">1500 us</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telemetry-label">Left Motor</div>
+        <div id="valL" class="telemetry-value">0%</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telemetry-label">Right Motor</div>
+        <div id="valR" class="telemetry-value">0%</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telemetry-label">Current Draw</div>
+        <div id="valCur" class="telemetry-value current-val">0.00 A</div>
+      </div>
+    </div>
+
+    <!-- Dual Gimbal Touch Arena -->
+    <div class="gimbals-container">
+      <!-- Left Gimbal (Throttle / Yaw) -->
+      <div class="gimbal-bezel" id="leftGimbal">
+        <div class="gimbal-crosshair-h"></div>
+        <div class="gimbal-crosshair-v"></div>
+        <div class="gimbal-center-ring"></div>
+        <div class="gimbal-stick" id="leftStick">
+          <div class="knurled-cap"></div>
+        </div>
+      </div>
+
+      <!-- Right Gimbal (Pitch / Roll) -->
+      <div class="gimbal-bezel" id="rightGimbal">
+        <div class="gimbal-crosshair-h"></div>
+        <div class="gimbal-crosshair-v"></div>
+        <div class="gimbal-center-ring"></div>
+        <div class="gimbal-stick right-stick" id="rightStick">
+          <div class="knurled-cap"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="tx-footer">
+      <div class="trim-label">RATE: 100% | EXPO: 20%</div>
+      <button class="estop-btn" onclick="emergencyStop()">E-STOP</button>
+      <div id="connDetail" class="trim-label">Target: 192.168.4.1</div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    let activeMode = 'wifi'; // 'wifi' or 'bluetooth'
+    let isConnected = false;
+    let ws = null;
+    let bleDevice = null;
+    let bleCharacteristic = null;
+
+    // Pulse & Speed Values
+    let ch1_pulse = 1500; // Throttle (1000 - 2000)
+    let ch2_pulse = 1500; // Steering (1000 - 2000)
+    let leftSpeed = 0;
+    let rightSpeed = 0;
+
+    // Elements
+    const leftGimbal  = document.getElementById('leftGimbal');
+    const leftStick   = document.getElementById('leftStick');
+    const rightGimbal = document.getElementById('rightGimbal');
+    const rightStick  = document.getElementById('rightStick');
+    const statusBadge = document.getElementById('statusBadge');
+    const statusText  = document.getElementById('statusText');
+    const connDetail  = document.getElementById('connDetail');
+
+    const valCh1 = document.getElementById('valCh1');
+    const valCh2 = document.getElementById('valCh2');
+    const valL   = document.getElementById('valL');
+    const valR   = document.getElementById('valR');
+    const valCur = document.getElementById('valCur');
+
+    // Setup Touch for Left Gimbal (Throttle / Forward-Back)
+    setupGimbal(leftGimbal, leftStick, (normX, normY) => {
+      // Y-axis inverted: Top is +1 (Forward), Bottom is -1 (Backward)
+      let throttle = -normY; 
+      ch1_pulse = Math.round(1500 + (throttle * 500));
+      updateMixing();
+    });
+
+    // Setup Touch for Right Gimbal (Steering / Left-Right)
+    setupGimbal(rightGimbal, rightStick, (normX, normY) => {
+      // X-axis: Right is +1, Left is -1
+      let steering = normX; 
+      ch2_pulse = Math.round(1500 + (steering * 500));
+      updateMixing();
+    });
+
+    function setupGimbal(bezel, stick, onMove) {
+      let activeTouchId = null;
+      const radius = 65; // max travel radius in pixels
+
+      function handleStart(e) {
+        e.preventDefault();
+        const touch = e.changedTouches ? e.changedTouches[0] : e;
+        activeTouchId = touch.identifier ?? 'mouse';
+        handleMove(e);
+      }
+
+      function handleMove(e) {
+        e.preventDefault();
+        let clientX, clientY;
+        if (e.changedTouches) {
+          for (let i = 0; i < e.changedTouches.length; i++) {
+            if (e.changedTouches[i].identifier === activeTouchId) {
+              clientX = e.changedTouches[i].clientX;
+              clientY = e.changedTouches[i].clientY;
+              break;
+            }
+          }
+        } else if (activeTouchId === 'mouse') {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+        if (clientX === undefined) return;
+
+        const rect = bezel.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        let dx = clientX - centerX;
+        let dy = clientY - centerY;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > radius) {
+          dx = (dx / dist) * radius;
+          dy = (dy / dist) * radius;
+        }
+
+        stick.style.transform = `translate(${dx}px, ${dy}px)`;
+        onMove(dx / radius, dy / radius);
+      }
+
+      function handleEnd(e) {
+        e.preventDefault();
+        stick.style.transform = `translate(0px, 0px)`;
+        activeTouchId = null;
+        onMove(0, 0); // snap back to center
+      }
+
+      bezel.addEventListener('touchstart', handleStart, { passive: false });
+      window.addEventListener('touchmove', handleMove, { passive: false });
+      window.addEventListener('touchend', handleEnd, { passive: false });
+
+      bezel.addEventListener('mousedown', handleStart);
+      window.addEventListener('mousemove', (e) => { if (activeTouchId === 'mouse') handleMove(e); });
+      window.addEventListener('mouseup', (e) => { if (activeTouchId === 'mouse') handleEnd(e); });
+    }
+
+    function updateMixing() {
+      // Differential Drive Formula (Matches board logic)
+      let throttle = Math.round(mapRange(ch1_pulse, 1000, 2000, -255, 255));
+      let steering = Math.round(mapRange(ch2_pulse, 1000, 2000, -255, 255));
+
+      // Deadbands
+      if (Math.abs(throttle) < 20) throttle = 0;
+      if (Math.abs(steering) < 20) steering = 0;
+
+      let targetL = throttle + steering;
+      let targetR = throttle - steering;
+
+      let maxMag = Math.max(Math.abs(targetL), Math.abs(targetR));
+      if (maxMag > 255) {
+        targetL = Math.round((targetL * 255) / maxMag);
+        targetR = Math.round((targetR * 255) / maxMag);
+      }
+
+      leftSpeed = targetL;
+      rightSpeed = targetR;
+
+      valCh1.innerText = `${ch1_pulse} us`;
+      valCh2.innerText = `${ch2_pulse} us`;
+      valL.innerText   = `${Math.round((leftSpeed / 255) * 100)}%`;
+      valR.innerText   = `${Math.round((rightSpeed / 255) * 100)}%`;
+    }
+
+    function mapRange(val, inMin, inMax, outMin, outMax) {
+      return (val - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    }
+
+    function emergencyStop() {
+      ch1_pulse = 1500;
+      ch2_pulse = 1500;
+      leftSpeed = 0;
+      rightSpeed = 0;
+      leftStick.style.transform = `translate(0px, 0px)`;
+      rightStick.style.transform = `translate(0px, 0px)`;
+      updateMixing();
+      sendDriveCommand(0, 0);
+    }
+
+    // ======================== COMMUNICATION ========================
+    function switchMode(mode) {
+      activeMode = mode;
+      document.getElementById('btnWifi').classList.toggle('active', mode === 'wifi');
+      document.getElementById('btnBt').classList.toggle('active', mode === 'bluetooth');
+      document.getElementById('btnBt').classList.toggle('bt-mode', mode === 'bluetooth');
+
+      if (mode === 'wifi') {
+        connDetail.innerText = "Target: 192.168.4.1:81";
+        connectWebSocket();
+      } else {
+        connDetail.innerText = "Target: Bluetooth (BLE/SPP)";
+        connectBluetooth();
+      }
+    }
+
+    // --- Wi-Fi WebSockets ---
+    function connectWebSocket() {
+      if (ws) ws.close();
+      const host = window.location.hostname || "192.168.4.1";
+      ws = new WebSocket(`ws://${host}:81/`);
+
+      ws.onopen = () => {
+        isConnected = true;
+        setConnectionState(true, "WI-FI CONNECTED");
+      };
+      ws.onclose = () => {
+        isConnected = false;
+        setConnectionState(false, "WI-FI DISCONNECTED");
+      };
+      ws.onmessage = (evt) => {
+        // Live Telemetry from ESP32: "I:1.45"
+        if (evt.data.startsWith("I:")) {
+          valCur.innerText = evt.data.substring(2) + " A";
+        }
+      };
+    }
+
+    // --- Web Bluetooth (BLE) ---
+    async function connectBluetooth() {
+      try {
+        if (!navigator.bluetooth) {
+          alert("Web Bluetooth not supported on this browser. Use Android Chrome!");
+          return;
+        }
+        statusText.innerText = "PAIRING BT...";
+        bleDevice = await navigator.bluetooth.requestDevice({
+          filters: [{ namePrefix: "STMESC" }],
+          optionalServices: ["4fafc201-1fb5-459e-8fcc-c5c9c331914b"]
+        });
+        const server = await bleDevice.gatt.connect();
+        const service = await server.getPrimaryService("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
+        bleCharacteristic = await service.getCharacteristic("beb5483e-36e1-4688-b7f5-ea07361b26a8");
+
+        isConnected = true;
+        setConnectionState(true, "BT CONNECTED");
+      } catch (err) {
+        console.error(err);
+        setConnectionState(false, "BT FAILED");
+      }
+    }
+
+    function setConnectionState(ok, text) {
+      statusBadge.classList.toggle('connected', ok);
+      statusText.innerText = text;
+    }
+
+    // Send loop at 25 Hz (every 40ms)
+    setInterval(() => {
+      sendDriveCommand(leftSpeed, rightSpeed);
+    }, 40);
+
+    function sendDriveCommand(left, right) {
+      const payload = `D,${left},${right}\n`;
+
+      if (activeMode === 'wifi' && ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(payload);
+      } else if (activeMode === 'bluetooth' && bleCharacteristic) {
+        const encoder = new TextEncoder();
+        bleCharacteristic.writeValueWithoutResponse(encoder.encode(payload)).catch(() => {});
+      }
+    }
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+        connectWebSocket();
+      });
+    } else {
+      window.addEventListener('load', () => {
+        connectWebSocket();
+      });
+    }
+  </script>
+</body>
+</html>
+
+)rawliteral";
+
+#endif

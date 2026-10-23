@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "STMESC RadioMaster Controller",
+  "short_name": "STMESC TX",
+  "description": "RadioMaster and FlySky style dual-gimbal transmitter controller for STMESC robot ESC",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0d0d11",
+  "theme_color": "#121216",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

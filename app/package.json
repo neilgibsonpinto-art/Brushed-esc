@@ -1,0 +1,16 @@
+{
+  "name": "stmesc-radiomaster-controller",
+  "version": "1.0.0",
+  "description": "RadioMaster / FlySky Style Controller for STMESC",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/android": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0"
+  }
+}

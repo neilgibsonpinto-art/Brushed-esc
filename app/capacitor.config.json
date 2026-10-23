@@ -1,0 +1,8 @@
+{
+  "appId": "com.stmesc.radiomaster",
+  "appName": "STMESC TX",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
