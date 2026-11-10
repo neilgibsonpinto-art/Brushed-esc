@@ -1,0 +1,27 @@
+Part Number / MPN,Quantity,Designators,Description
+VNH7070BASTR,2,"U1, U2",STMicroelectronics Automotive H-Bridge Motor Driver 15A SOIC-16
+ESP32-WROOM-32E-N4,1,U3,Espressif Wi-Fi + BLE MCU Module 4MB Flash
+AP63205WU-7,1,U6,Diodes Inc 2A Synchronous 5V Buck Converter TSOT-26
+AMS1117-3.3,1,U5,1A LDO Voltage Regulator 3.3V SOT-223
+IRFR5305,1,Q2,P-Channel Power MOSFET -55V -31A TO-252 (DPAK)
+SWPA5040S4R7NT,1,L1,Sunlord 4.7uH SMD Power Inductor 3A
+BZT52C15,1,D3,15V 500mW SMD Zener Diode SOD-123
+0805 SMD LED Green,1,D1,0805 SMD LED Green
+0805 SMD LED Blue,1,D4,0805 SMD LED Blue
+0805 SMD LED Red,1,D5,0805 SMD LED Red
+330uF 35V SMD Electrolytic,2,"C1, C2",SMD Aluminum Electrolytic Capacitor 35V 8x10.5mm
+1206 22uF 35V Ceramic,1,C13,1206 SMD MLCC 22uF 35V / 50V
+1206 22uF Ceramic,3,"C7, C21, C22",1206 SMD MLCC 22uF 16V / 25V
+0805 10uF Ceramic,2,"C14, C15",0805 SMD MLCC 10uF 16V / 25V
+0805 100nF Ceramic,6,"C3, C4, C8, C12, C16, C20",0805 SMD MLCC 0.1uF 50V
+0805 1uF Ceramic,1,C9,0805 SMD MLCC 1uF 25V / 50V
+0805 10nF Ceramic,2,"C10, C11",0805 SMD MLCC 10nF 50V
+0805 1k Resistor,10,"R1, R4, R5, R6, R7, R10, R11, R12, R15, R16",0805 SMD Chip Resistor 1k Ohm 5%
+0805 1k Resistor 1%,2,"R8, R13",0805 SMD Chip Resistor 1k Ohm 1% Precision
+0805 10k Resistor,4,"R2, R3, R9, R14",0805 SMD Chip Resistor 10k Ohm 5%
+0805 100k Resistor,1,R17,0805 SMD Chip Resistor 100k Ohm 5%
+3x6mm SMD Tactile Switch,2,"SW1, SW2",SMD Push Button Tactile Switch (TS-1088 / 3x6x2.5mm)
+6x6x5mm Tactile Switch,1,SW3,Through-Hole Tactile Push Button Switch 6x6mm
+2 Pin 5.08mm Screw Terminal,3,"J2, J3, J5",2-Pin 5.08mm Pitch PCB Screw Terminal Block
+40 Pin 2.54mm Male Header,1,J4,Single Row 2.54mm Pin Header (Snap to 6-Pin)
+Dual Row 2.54mm Male Header,1,J6,Dual Row 2.54mm Pin Header (Snap to 2x3 Pin)

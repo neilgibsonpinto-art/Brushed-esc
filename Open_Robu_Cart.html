@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAMBA B1 - Robu.in Cart Sourcing Helper</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; padding: 24px; margin: 0; }
+        .container { max-width: 900px; margin: 0 auto; background: #1e293b; border-radius: 12px; padding: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        h1 { margin-top: 0; color: #38bdf8; font-size: 24px; }
+        p { color: #94a3b8; line-height: 1.5; }
+        .btn-main { background: #0284c7; color: white; border: none; padding: 14px 22px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer; margin-right: 12px; transition: background 0.2s; }
+        .btn-main:hover { background: #0369a1; }
+        .btn-secondary { background: #334155; color: white; border: none; padding: 14px 22px; font-size: 16px; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-secondary:hover { background: #475569; }
+        table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #38bdf8; font-size: 14px; text-transform: uppercase; }
+        tr:hover { background: #243248; }
+        .qty { font-weight: bold; color: #f59e0b; }
+        .buy-link { color: #38bdf8; text-decoration: none; font-weight: 600; padding: 4px 10px; background: #0f172a; border-radius: 6px; }
+        .buy-link:hover { background: #0284c7; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MAMBA B1 Dual Motor ESC ? Robu.in Sourcing Assistant</h1>
+        <p>Use <strong>Method 1</strong> to upload the ready CSV directly into Robu's BOM Tool and hit <em>"Add all to cart"</em>, or use <strong>Method 2</strong> to open all component pages directly.</p>
+        
+        <div style="margin: 20px 0;">
+            <a href="https://robu.in/bom-tool/" target="_blank" class="btn-main">Go to Robu.in BOM Tool (1-Click Upload)</a>
+            <button class="btn-secondary" onclick="openAllTabs()">Open All 26 Items in Tabs</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Part / MPN</th>
+                    <th>Qty</th>
+                    <th>Designators</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const items = [
+            { name: "VNH7070BASTR (15A H-Bridge)", qty: 2, des: "U1, U2", url: "https://robu.in/?post_type=product&s=VNH7070BASTR" },
+            { name: "ESP32-WROOM-32E-N4 (MCU)", qty: 1, des: "U3", url: "https://robu.in/?post_type=product&s=ESP32-WROOM-32E-N4" },
+            { name: "AP63205WU-7 (5V 2A Buck)", qty: 1, des: "U6", url: "https://robu.in/?post_type=product&s=AP63205WU-7" },
+            { name: "AMS1117-3.3 (3.3V LDO)", qty: 1, des: "U5", url: "https://robu.in/?post_type=product&s=AMS1117-3.3+SOT-223" },
+            { name: "IRFR5305 (P-MOSFET TO-252)", qty: 1, des: "Q2", url: "https://robu.in/?post_type=product&s=IRFR5305+TO-252" },
+            { name: "SWPA5040S4R7NT (4.7uH Inductor)", qty: 1, des: "L1", url: "https://robu.in/?post_type=product&s=SWPA5040S4R7NT" },
+            { name: "BZT52C15 (15V Zener Diode)", qty: 1, des: "D3", url: "https://robu.in/?post_type=product&s=15V+Zener+Diode+SOD-123" },
+            { name: "0805 SMD LED Green", qty: 1, des: "D1", url: "https://robu.in/?post_type=product&s=0805+SMD+LED+Green" },
+            { name: "0805 SMD LED Blue", qty: 1, des: "D4", url: "https://robu.in/?post_type=product&s=0805+SMD+LED+Blue" },
+            { name: "0805 SMD LED Red", qty: 1, des: "D5", url: "https://robu.in/?post_type=product&s=0805+SMD+LED+Red" },
+            { name: "330uF 35V SMD Electrolytic", qty: 2, des: "C1, C2", url: "https://robu.in/?post_type=product&s=SMD+Electrolytic+Capacitor+35V+8x10.5" },
+            { name: "1206 22uF 35V MLCC", qty: 1, des: "C13", url: "https://robu.in/?post_type=product&s=1206+SMD+Capacitor+22uF" },
+            { name: "1206 22uF MLCC", qty: 3, des: "C7, C21, C22", url: "https://robu.in/?post_type=product&s=1206+SMD+Capacitor+22uF" },
+            { name: "0805 10uF MLCC", qty: 2, des: "C14, C15", url: "https://robu.in/?post_type=product&s=0805+SMD+Capacitor+10uF" },
+            { name: "0805 100nF MLCC", qty: 6, des: "C3, C4, C8, C12, C16, C20", url: "https://robu.in/?post_type=product&s=0805+SMD+Capacitor+100nF" },
+            { name: "0805 1uF MLCC", qty: 1, des: "C9", url: "https://robu.in/?post_type=product&s=0805+SMD+Capacitor+1uF" },
+            { name: "0805 10nF MLCC", qty: 2, des: "C10, C11", url: "https://robu.in/?post_type=product&s=0805+SMD+Capacitor+10nF" },
+            { name: "0805 1k Resistor 5%", qty: 10, des: "R1, R4-7, R10-12, R15, R16", url: "https://robu.in/?post_type=product&s=0805+SMD+Resistor+1k" },
+            { name: "0805 1k Resistor 1% Precision", qty: 2, des: "R8, R13", url: "https://robu.in/?post_type=product&s=0805+SMD+Resistor+1k+1%25" },
+            { name: "0805 10k Resistor 5%", qty: 4, des: "R2, R3, R9, R14", url: "https://robu.in/?post_type=product&s=0805+SMD+Resistor+10k" },
+            { name: "0805 100k Resistor 5%", qty: 1, des: "R17", url: "https://robu.in/?post_type=product&s=0805+SMD+Resistor+100k" },
+            { name: "3x6mm SMD Tactile Switch", qty: 2, des: "SW1, SW2", url: "https://robu.in/?post_type=product&s=SMD+Tactile+Push+Button+Switch" },
+            { name: "6x6x5mm Tactile Switch THT", qty: 1, des: "SW3", url: "https://robu.in/?post_type=product&s=6x6x5mm+Tactile+Push+Button" },
+            { name: "2 Pin 5.08mm Screw Terminal", qty: 3, des: "J2, J3, J5", url: "https://robu.in/?post_type=product&s=2+Pin+5.08mm+Pitch+Screw+Terminal" },
+            { name: "40 Pin 2.54mm Male Header", qty: 1, des: "J4", url: "https://robu.in/?post_type=product&s=40+Pin+2.54mm+Male+Pin+Header" },
+            { name: "Dual Row 2.54mm Header", qty: 1, des: "J6", url: "https://robu.in/?post_type=product&s=Dual+Row+2.54mm+Male+Pin+Header" }
+        ];
+
+        const tbody = document.getElementById('table-body');
+        items.forEach(it => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong>${it.name}</strong></td>
+                <td class="qty">x${it.qty}</td>
+                <td><code>${it.des}</code></td>
+                <td><a href="${it.url}" target="_blank" class="buy-link">Open & Buy &rarr;</a></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        function openAllTabs() {
+            items.forEach((it, idx) => {
+                setTimeout(() => {
+                    window.open(it.url, '_blank');
+                }, idx * 150);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+ERC report (2026-11-07T18:12:27, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+[lib_symbol_mismatch]: Symbol 'ESP32-WROOM-32E' doesn't match copy in library 'RF_Module'
+    ; warning
+    @(93.98 mm, 181.61 mm): Symbol U3 [ESP32-WROOM-32E]
+[lib_symbol_mismatch]: Symbol 'PMOS' doesn't match copy in library 'Simulation_SPICE'
+    ; warning
+    @(95.25 mm, 53.34 mm): Symbol Q2 [PMOS]
+[lib_symbol_mismatch]: Symbol 'AP63205WU-7' doesn't match copy in library 'AP63205WU-7'
+    ; warning
+    @(288.29 mm, 63.50 mm): Symbol U6 [AP63205WU-7]
+
+ ** ERC messages: 3  Errors 0  Warnings 3
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

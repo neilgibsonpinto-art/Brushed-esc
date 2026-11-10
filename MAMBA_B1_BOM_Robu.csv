@@ -1,0 +1,24 @@
+Item,Designator,Quantity,Value,Package,Description,Robu_Search_Term,Robu_Category,Estimated_Price_INR,Remarks
+1,"U1, U2",2,VNH7070BASTR,SOIC-16 (NSOIC-16),STMicroelectronics Automotive Full H-Bridge Motor Driver IC 4V-28V 15A,VNH7070BASTR-Stmicroelectronics-Motor Driver/Controller,Motor Drivers / ICs,650.00,Direct OEM part on Robu.in
+2,U3,1,ESP32-WROOM-32E,SMD Module (ESP32-WROOM-32),Espressif Dual-Core Wi-Fi & Bluetooth MCU Module 4MB SPI Flash,Espressif ESP32-WROOM-32E-N4 Modules (4MB Flash),Wireless & IoT Modules,280.00,Fully pin-compatible with ESP32-WROOM-32D
+3,U6,1,AP63205WU-7,TSOT-26 (TSOT-23-6),Diodes Inc. 2A Synchronous Step-Down DC-DC Buck Converter Fixed 5V Output,AP63205WU-7 Diodes Incorporated Step-down Fixed DC-DC Converter,Power Management ICs,95.00,High efficiency BEC power IC
+4,U5,1,AMS1117-3.3,SOT-223-3,1A Low Dropout (LDO) Positive Voltage Regulator 3.3V Output,AMS1117-3.3 SOT-223 Voltage Regulator,Voltage Regulators,12.00,Powers ESP32 logic rail from 5V
+5,Q2,1,IRFR5305,TO-252 (DPAK),P-Channel MOSFET -55V -31A 65mOhm Reverse Polarity Protection,IRFR5305 TO-252 P-channel MOSFET,MOSFETs / Transistors,45.00,Slkor / IR / Infineon TO-252
+6,L1,1,4.7uH,SMD 5040 (5.0x5.0x4.0mm),Shielded SMD Power Inductor 4.7uH 3A+ (Sunlord SWPA5040S4R7NT),SWPA5040S4R7NT Sunlord 4.7uH SMD Power Inductor,SMD Inductors,25.00,Buck converter choke
+7,D3,1,15V Zener,SOD-123,15V 500mW SMD Zener Diode (BZT52C15 / MMSZ5245B),15V Zener Diode SOD-123 SMD,Diodes,5.00,MOSFET Vgs gate clamp protection
+8,"D1, D4, D5",3,"LED (Green, Blue, Yellow/Red)",SMD 0805,"0805 SMD Indicator LEDs (D1: WiFi/Green, D4: RC/Blue, D5: BT/Yellow or Red)",0805 SMD LED (Assorted Pack / Single Colors),Optoelectronics / LEDs,6.00,2.0V - 3.2V forward voltage
+9,"C1, C2",2,270uF 35V,SMD 8x10.5mm,Surface Mount Aluminum Electrolytic Capacitor 270uF to 330uF 35V Low ESR,SMD Electrolytic Capacitor 35V 270uF / 330uF 8x10.5,Capacitors,30.00,Motor bridge bulk bypass; 330uF 35V 8x10.5mm is also directly compatible
+10,"C7, C13, C21, C22",4,22uF 35V / 25V,SMD 1206,Multilayer Ceramic Capacitor 22uF 35V (or 25V) X5R/X7R 1206,1206 SMD Ceramic Capacitor 22uF,SMD Capacitors,24.00,"C13 must be >=35V rated; C7, C21, C22 can be 16V-35V"
+11,"C14, C15",2,10uF 16V/25V,SMD 0805,Multilayer Ceramic Capacitor 10uF 16V/25V X5R 0805,0805 SMD Ceramic Capacitor 10uF,SMD Capacitors,8.00,Buck output & auxiliary smoothing
+12,"C3, C4, C8, C12, C16, C20",6,100nF (0.1uF) 50V,SMD 0805,Multilayer Ceramic Capacitor 0.1uF (100nF) 50V X7R 0805,0805 SMD Ceramic Capacitor 100nF (0.1uF),SMD Capacitors,12.00,Decoupling & bootstrap
+13,C9,1,1uF 25V/50V,SMD 0805,Multilayer Ceramic Capacitor 1uF 25V/50V X7R 0805,0805 SMD Ceramic Capacitor 1uF,SMD Capacitors,4.00,ESP32 EN reset circuit delay
+14,"C10, C11",2,10nF 50V,SMD 0805,Multilayer Ceramic Capacitor 10nF (0.01uF) 50V X7R 0805,0805 SMD Ceramic Capacitor 10nF,SMD Capacitors,6.00,Current sense anti-aliasing filter
+15,"R1, R4, R5, R6, R7, R10, R11, R12, R15, R16",10,1k Ohm 5%,SMD 0805,Thick Film Chip Resistor 1k Ohm 1/8W 5% 0805,0805 SMD Resistor 1k Ohm,SMD Resistors,15.00,"LED ballasts, gate pull-down, driver logic buffer"
+16,"R8, R13",2,1k Ohm 1%,SMD 0805,Precision Thick Film Chip Resistor 1k Ohm 1/8W 1% 0805,0805 SMD Resistor 1k Ohm 1% precision,SMD Resistors,6.00,VNH7070 Current Sense load resistor
+17,"R2, R3, R9, R14",4,10k Ohm 5%,SMD 0805,Thick Film Chip Resistor 10k Ohm 1/8W 5% 0805,0805 SMD Resistor 10k Ohm,SMD Resistors,8.00,"Pull-ups (EN, IO0) & current sense RC filter"
+18,R17,1,100k Ohm 5%,SMD 0805,Thick Film Chip Resistor 100k Ohm 1/8W 5% 0805,0805 SMD Resistor 100k Ohm,SMD Resistors,3.00,High-impedance pull-down / reference
+19,"SW1, SW2",2,SMD Tactile Switch,SMD TS-1088 / 3x6x2.5mm,Miniature SMD Push Button Tactile Switch (Reset & Boot),SMD Tactile Push Button Switch 3x6mm or TS-1088,Switches,10.00,"SW1=Reset (EN), SW2=Bootloader (IO0)"
+20,SW3,1,6x6mm Push Button,THT 6x6mm (P=4.5x6.5mm),Through-Hole Tactile Push Button Switch 6x6x5mm,6x6x5mm Tactile Push Button Switch THT,Switches,5.00,Mode select switch (IO13)
+21,"J2, J3, J5",3,2-Pin 5.08mm Screw Terminal,THT 5.08mm Pitch,2-Pin 5.08mm Pitch PCB Screw Terminal Block (Phoenix MKDS 1.5/2 type),2 Pin 5.08mm Pitch Pluggable / PCB Screw Terminal Block,Connectors & Terminals,36.00,"J5=Battery Input, J2=Motor 1, J3=Motor 2"
+22,J4,1,1x6 Pin Header 2.54mm,THT 1x06 2.54mm,Single Row Male Pin Header 1x6 Pin Straight 2.54mm Pitch,40 Pin 2.54mm Single Row Male Pin Header (Snap to 6-Pin),Headers & Connectors,8.00,UART / Flashing header
+23,J6,1,2x3 Pin Header 2.54mm,THT 2x03 2.54mm,Dual Row Male Pin Header 2x3 Pin Straight 2.54mm Pitch,Dual Row 2.54mm Male Pin Header Strip,Headers & Connectors,10.00,RC Channels 1 & 2 + 5V BEC out + GND
